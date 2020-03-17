@@ -1,6 +1,7 @@
 node('haimaxy-jnlp') {
-  stage('Clone') {
+  stage('Prepare Stage') {
     echo "1. Prepare"
+    checkout scm
     script {
         build_tag = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
         echo "####################### ${build_tag} ########${env.BRANCH_NAME}####${env.branch}####${env}#####"
