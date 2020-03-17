@@ -11,6 +11,7 @@ spec:
     metadata:
       labels:
         app: jenkins-demo
+        
     spec:
       containers:
       - image: whatlong7/jenkins-demo:<BUILD_TAG>
