@@ -4,6 +4,10 @@ node('whatlong7-jnlp') {
         checkout scm
         script {
             build_tag = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
+
+	//当使用多流水线pipeline时，jenkins会根据git多分支branch名称注入一个叫BRANCH_NAME的环境变量，可以根据这个环境变量做版本判断等功能
+        //注意，是自动注入的
+        echo "####################### ${build_tag} ######## ${env.BRANCH_NAME} #### ${env.branch} #### ${env} #####"
             if (env.BRANCH_NAME != 'master') {
                 build_tag = "${env.BRANCH_NAME}-${build_tag}"
             }
